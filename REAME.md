@@ -1,4 +1,4 @@
 ## TODO
 
-* support bash-completion
+* support bash-completion(command & bookmarks)
 
