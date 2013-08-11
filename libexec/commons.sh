@@ -17,36 +17,6 @@ function _l {
     env | grep "^DIR_" | cut -c5- | sort | grep "^.*=" | cut -f1 -d "=" 
 }
 
-# completion command
-function _comp {
-    local curw
-    COMPREPLY=()
-    curw=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -W '`_l`' -- $curw))
-    return 0
-}
-
-# ZSH completion command
-function _compzsh {
-    reply=($(_l))
-}
-
-
-function _custom_comp {
-    # bind completion command for g,p,d to _comp
-    if [ $ZSH_VERSION ]; then
-        compctl -K _compzsh g
-        compctl -K _compzsh p
-        compctl -K _compzsh d
-    else
-        shopt -s progcomp
-        complete -F _comp jump
-        complete -F _comp print
-        complete -F _comp delete
-    fi
-}
-
-
 # validate bookmark name
 function _bookmark_name_valid {
     exit_message=""
