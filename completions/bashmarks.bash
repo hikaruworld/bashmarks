@@ -17,7 +17,7 @@ _bashmarks() {
     COMPREPLY=( $(compgen -W "$(bashmarks commands)" -- "$word") )
   else
     local command="${COMP_WORDS[1]}"
-    if [ "$command" = "jump" ]; then
+    if [ "$command" = "jump" ] || [ "$command" = "print" ] || [ "$command" = "delete" ]; then
       local curw="${COMP_WORDS[2]}"
       COMPREPLY=($(compgen -W '`_l`' -- $curw))
     else
