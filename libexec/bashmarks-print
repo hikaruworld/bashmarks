@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+. $_BASHMARKS_ROOT/libexec/commons.sh
+
+_setup
+
+source $SDIRS
+echo "$(eval $(echo echo $(echo \$DIR_$1)))"

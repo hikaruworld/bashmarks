@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+. $_BASHMARKS_ROOT/libexec/commons.sh
+
+_setup
+
+_bookmark_name_valid "$@"
+if [ -z "$exit_message" ]; then
+    _purge_line "$SDIRS" "export DIR_$1="
+    CURDIR=$(echo $PWD| sed "s#^$HOME#\$HOME#g")
+    echo "export DIR_$1=\"$CURDIR\"" >> $SDIRS
+fi
